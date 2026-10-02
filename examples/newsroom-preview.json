@@ -1,0 +1,81 @@
+{
+  "style": "newsroom",
+  "language": "zh-CN",
+  "title": "团队写作正在从交付文档转向维护共同判断",
+  "eyebrow": "FIELD REPORT · WORKING PRACTICES",
+  "created_at": "2026-09-29",
+  "author": "Newsroom Preview",
+  "summary": "一份报刊式观察稿：当文档参与推理、评审与交接，它就不再只是会议结束后的记录。",
+  "chapters": [
+    {
+      "title": "文档的角色发生了变化",
+      "summary": "过去，文档常在决定之后出现；现在，它越来越早地进入问题定义和方案形成阶段。",
+      "sections": [
+        {
+          "title": "从记录结果到暴露分歧",
+          "blocks": [
+            {"type": "paragraph", "content": "一份有效的工作文档，不只告诉读者团队决定了什么，还应该展示证据来自哪里、哪些判断仍不稳定，以及下一步由谁验证。"},
+            {"type": "quote", "content": "真正有用的文档，会让尚未达成共识的部分变得可见。", "cite": "编辑观察"},
+            {
+              "type": "cards",
+              "items": [
+                {"label": "SIGNAL", "title": "来源可追溯", "content": "关键结论能够回到原始访谈、数据或决策记录。"},
+                {"label": "CONTEXT", "title": "判断有边界", "content": "事实、解释与建议彼此区分，不把假设写成结论。"},
+                {"label": "ACTION", "title": "行动可接续", "content": "下一位读者可以直接继续工作，而不需要重新口头转述。"}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "三类阅读任务",
+          "blocks": [
+            {
+              "type": "table",
+              "label": "文档阅读任务",
+              "headers": ["阅读者", "首先寻找", "适合的结构"],
+              "first_column_header": true,
+              "rows": [
+                ["决策者", "结论与风险", "标题、摘要、对比"],
+                ["执行者", "步骤与边界", "流程、清单、定义"],
+                ["复盘者", "来源与变化", "时间、证据、版本记录"]
+              ],
+              "note": "表格描述的是阅读目标，不是固定的组织角色。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "好的结构让事实保留原貌",
+      "summary": "版式应帮助读者定位信息，而不是把所有内容加工成相同的宣传口吻。",
+      "sections": [
+        {
+          "title": "编辑取舍",
+          "blocks": [
+            {
+              "type": "compare",
+              "label": "两种编辑方式",
+              "columns": [
+                {"label": "装饰优先", "tone": "old", "content": "为了页面丰富而拆分内容，导致事实之间的关系被弱化。"},
+                {"label": "结构优先", "tone": "new", "content": "先确认语义关系，再选择段落、表格、引用或旁注。"}
+              ]
+            },
+            {
+              "type": "aside",
+              "label": "EDITOR'S NOTE",
+              "title": "关于这份示例",
+              "content": "本文是用于检验 newsroom 主题的虚构编辑稿，不代表调查结论或外部研究结果。"
+            }
+          ]
+        },
+        {
+          "title": "出版前检查",
+          "blocks": [
+            {"type": "list", "ordered": true, "items": ["核对标题是否准确概括正文", "区分事实、引述与编辑判断", "确认表格和链接可以独立理解", "在窄屏和打印版中复核阅读顺序"]},
+            {"type": "callout", "tone": "neutral", "label": "Closing note", "content": "报刊感来自克制的层级、字体和线条，不需要复制任何出版物的品牌元素。"}
+          ]
+        }
+      ]
+    }
+  ]
+}

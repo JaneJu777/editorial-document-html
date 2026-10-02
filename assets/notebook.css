@@ -1,0 +1,852 @@
+@font-face {
+  font-family: 'Playwrite US Modern';
+  font-style: normal;
+  font-weight: 100 400;
+  font-display: swap;
+  src: url('__FONT_DIR__/PlaywriteUSModern-wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playwrite US Trad';
+  font-style: normal;
+  font-weight: 100 400;
+  font-display: swap;
+  src: url('__FONT_DIR__/PlaywriteUSTrad-wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('__FONT_DIR__/LXGWWenKai-Regular.ttf') format('truetype');
+}
+
+/* Notebook: a text-first ruled sheet, adapted from the reading system of the
+   Primarium theme — handwriting-led type, ruled paper, a pink margin rule and a
+   single cobalt pen colour. The theme's masthead, doodle illustrations, duotone
+   photo treatment and promotional UI are not reproduced.
+   Playwrite US carries every Latin glyph; LXGW WenKai carries every CJK glyph,
+   regardless of component or type size. */
+
+html[data-style="notebook"] {
+  /* Remap the shared tokens so every base component follows the notebook palette. */
+  --page: #fdfdfd;
+  --ink: #0044cc;
+  --muted: #3f63b8;
+  --line: #d5d5d5;
+  --soft: #eef3ff;
+  --table: #fdfdfd;
+  --table-head: #ffe3f1;
+
+  --nb-paper: #fdfdfd;
+  --nb-rule: #f6f6f6;
+  --nb-line: calc(32px * var(--font-scale));
+  --nb-ink: #0044cc;
+  --nb-ink-soft: #3f63b8;
+  --nb-hairline: #b9c8e6;
+  --nb-margin: #ff80bf;
+  --nb-note: #ffd6e9;
+  --nb-note-yellow: #fff3c4;
+  --nb-highlight: #ffe3f1;
+  --nb-wash: #eef3ff;
+  --nb-chip-green: #e3f3df;
+  --nb-chip-yellow: #fff0b8;
+  --nb-chip-blue: #e4edff;
+  --nb-chip-gray: #edf0f5;
+  --nb-accent: #b30000;
+  --nb-accent-ink: #fff5f5;
+  /* Excalidraw-like rough strokes: each mark is drawn twice with slightly different
+     pressure and geometry. The second pass is offset rather than mechanically dashed. */
+  --nb-hand-line: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2072%2012'%3E%3Cpath%20d='M0%206.1C11%204.8%2021%207.2%2034%205.7S58%206.8%2072%205.4'%20fill='none'%20stroke='%23000'%20stroke-width='1.55'%20stroke-linecap='round'/%3E%3Cpath%20d='M0%207.4C13%206.2%2025%208.1%2038%206.5S60%207.6%2072%206.7'%20fill='none'%20stroke='%23000'%20stroke-width='.85'%20stroke-linecap='round'%20opacity='.62'/%3E%3C/svg%3E");
+  --nb-hand-line-v: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2072'%3E%3Cpath%20d='M6.1%200C4.8%2011%207.2%2021%205.7%2034S6.8%2058%205.4%2072'%20fill='none'%20stroke='%23000'%20stroke-width='1.55'%20stroke-linecap='round'/%3E%3Cpath%20d='M7.4%200C6.2%2013%208.1%2025%206.5%2038S7.6%2060%206.7%2072'%20fill='none'%20stroke='%23000'%20stroke-width='.85'%20stroke-linecap='round'%20opacity='.62'/%3E%3C/svg%3E");
+  --nb-hand-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2034'%3E%3Cg%20fill='none'%20stroke='%23000'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M11.2%202.2C9.4%209.2%2013.5%2014.7%2011.6%2025.8M5.8%2021.7l5.8%208.1%206.7-7.8'%20stroke-width='1.65'/%3E%3Cpath%20d='M12.8%202.8c-1.1%207.7%202%2013.4%20.2%2023.6M6.9%2022.8l5.2%207.7%205.4-7.4'%20stroke-width='.85'%20opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+  --nb-torn-a: polygon(0 .9%,3.5% 0,7% .8%,11% .1%,15% 1%,20% .2%,25% .9%,30% 0,36% .8%,42% .2%,48% 1%,54% .1%,60% .8%,67% 0,74% .9%,81% .2%,88% .8%,94% .1%,100% 1%,99.2% 8%,100% 15%,99.1% 23%,100% 31%,99.2% 40%,100% 49%,99.1% 59%,100% 68%,99.2% 77%,100% 87%,99% 100%,93% 99.2%,87% 100%,80% 99.1%,73% 100%,65% 99.2%,57% 100%,49% 99.1%,41% 100%,33% 99.2%,25% 100%,17% 99.1%,9% 100%,0 99%,.8% 90%,0 80%,.9% 69%,0 58%,.8% 47%,0 36%,.9% 24%,0 13%);
+  --nb-torn-b: polygon(0 1.2%,5% .2%,10% 1%,16% 0,22% .9%,29% .1%,36% 1.1%,43% .2%,51% .9%,59% 0,67% 1%,75% .2%,83% 1.1%,91% .1%,100% 1%,99% 10%,100% 21%,99.2% 33%,100% 45%,99% 57%,100% 70%,99.1% 83%,100% 99%,92% 100%,84% 99.1%,76% 100%,68% 99%,60% 100%,52% 99.2%,44% 100%,36% 99%,28% 100%,20% 99.1%,12% 100%,0 99%,.9% 87%,0 73%,1% 60%,0 46%,.9% 32%,0 18%);
+  --nb-hand: 'Playwrite US Modern', 'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive;
+  --nb-hand-italic: 'Playwrite US Trad', 'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive;
+  --nb-ui: 'Playwrite US Modern', 'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive;
+}
+
+html[data-style="notebook"][data-theme="dark"] {
+  /* Dark is the same sheet under a desk lamp: deep blue-black paper, chalk-blue ink. */
+  --page: #121722;
+  --ink: #d7e3ff;
+  --muted: #93a4c6;
+  --line: #2c3648;
+  --soft: #1a2233;
+  --table: #141a26;
+  --table-head: #3a2740;
+
+  --nb-paper: #121722;
+  --nb-rule: #171d2a;
+  --nb-ink: #d7e3ff;
+  --nb-ink-soft: #93a4c6;
+  --nb-hairline: #35415a;
+  --nb-margin: #e078ad;
+  --nb-note: #4a2c40;
+  --nb-note-yellow: #3e3a22;
+  --nb-highlight: #3a2740;
+  --nb-wash: #1a2233;
+  --nb-chip-green: #233b2b;
+  --nb-chip-yellow: #463c1d;
+  --nb-chip-blue: #263552;
+  --nb-chip-gray: #2d3340;
+  --nb-accent: #8f1414;
+  --nb-accent-ink: #ffecec;
+}
+
+/* Ruled paper across the whole sheet, at one rule per reading line. */
+html[data-style="notebook"] body {
+  background-color: var(--nb-paper);
+  background-image: repeating-linear-gradient(to bottom,
+    var(--nb-rule) 0 1px, transparent 1px var(--nb-line));
+  font-family: var(--nb-hand);
+}
+
+html[data-style="notebook"] ::selection {
+  background: var(--nb-highlight);
+  color: var(--nb-ink);
+}
+
+html[data-style="notebook"] .topbar {
+  border-bottom: 2px dotted var(--nb-ink);
+}
+html[data-style="notebook"] .topbar button,
+html[data-style="notebook"] .topbar select {
+  font-family: var(--nb-ui);
+}
+html[data-style="notebook"] main.article-shell {
+  position: relative;
+  width: min(100% - 48px, 780px);
+  padding-left: 34px;
+}
+/* The margin rule of the sheet, running down the left of the reading column. */
+html[data-style="notebook"] main.article-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: var(--nb-margin);
+}
+
+html[data-style="notebook"] .article-hero { padding: 60px 0 0; }
+html[data-style="notebook"] .eyebrow {
+  margin: 0 0 14px;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+html[data-style="notebook"] .article-hero h1 {
+  max-width: 15em;
+  margin: 0 0 22px;
+  font-family: var(--nb-hand);
+  font-size: clamp(36px, 4.4vw, 58px);
+  font-weight: 400;
+  line-height: 1.34;
+  letter-spacing: 0;
+}
+html[data-style="notebook"] .byline {
+  gap: 8px;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+html[data-style="notebook"] .byline::before {
+  content: "\21B3";
+  color: var(--nb-margin);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+/* The summary is a pink sticky note pasted at the head of the sheet. */
+html[data-style="notebook"] .summary {
+  margin: 44px 0 40px;
+  padding: 20px 24px 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-note);
+  transform: rotate(-.5deg);
+  transform-origin: center top;
+  -webkit-clip-path: var(--nb-torn-a);
+  clip-path: var(--nb-torn-a);
+  font-size: 1.06em;
+  line-height: 1.8;
+}
+html[data-style="notebook"] .generated-label {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 3px 11px 4px;
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+  font-family: var(--nb-ui);
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+
+html[data-style="notebook"] .article-content {
+  font-size: calc(17px * var(--font-scale));
+  line-height: 1.84;
+}
+html[data-style="notebook"] .article-content a {
+  color: inherit;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .12em;
+}
+html[data-style="notebook"] .article-content a:hover { text-decoration: none; }
+
+html[data-style="notebook"] .article-chapter { margin: 0 0 92px; }
+html[data-style="notebook"] .article-chapter h2 {
+  gap: 14px;
+  margin: 0 0 42px;
+  font-family: var(--nb-hand);
+  font-size: 2.05em;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+/* The rule that trails a chapter title is drawn by hand: a thicker pink wave. */
+html[data-style="notebook"] .article-chapter h2::after {
+  height: 12px;
+  border: 0;
+  background-color: var(--nb-margin);
+  background-image: none;
+  -webkit-mask-image: var(--nb-hand-line);
+  mask-image: var(--nb-hand-line);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  -webkit-mask-size: 72px 12px;
+  mask-size: 72px 12px;
+}
+/* The chapter numeral reads as a highlighter swipe in the margin. */
+html[data-style="notebook"] .article-chapter h2 span {
+  padding: .04em .4em;
+  background: var(--nb-highlight);
+  color: var(--nb-ink);
+  font-size: .8em;
+}
+html[data-style="notebook"] .chapter-summary {
+  margin: 0 0 32px;
+  color: var(--nb-ink-soft);
+  font-size: 1.02em;
+  line-height: 1.8;
+}
+html[data-style="notebook"] .article-section { margin: 0 0 62px; }
+html[data-style="notebook"] .article-section h3 {
+  margin: 0 0 20px;
+  font-family: var(--nb-hand);
+  font-size: 1.32em;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+html[data-style="notebook"] .article-content h4 {
+  margin: 28px 0 12px;
+  font-family: var(--nb-hand);
+  font-size: 1.12em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+html[data-style="notebook"] .article-content p { margin: 0 0 22px; }
+
+/* Bold copy is the ink that was marked over: a pink swipe behind every strong.
+   On a solid cobalt or vermilion fill the swipe cannot read, so it stays plain. */
+html[data-style="notebook"] .article-content strong {
+  padding: 0 .3em;
+  background: var(--nb-highlight);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+html[data-style="notebook"] :is(.callout.tone-ink, .article-card.tone-ink, .article-card.tone-accent) strong {
+  padding: 0;
+  background: transparent;
+}
+
+html[data-style="notebook"] .article-content ul.article-list > li::marker {
+  content: "\2013\00a0\00a0";
+  color: var(--nb-ink-soft);
+}
+html[data-style="notebook"] .article-content ul.article-list ul > li::marker {
+  content: "\00b7\00a0\00a0";
+}
+html[data-style="notebook"] .article-content ol.article-list > li::marker {
+  color: var(--nb-ink);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+html[data-style="notebook"] .article-list { padding-left: 1.5em; }
+html[data-style="notebook"] .article-list li { margin: 5px 0; }
+html[data-style="notebook"] .article-list ul,
+html[data-style="notebook"] .article-list ol { margin: 8px 0; }
+
+/* Cards are torn sticky notes: square, slightly rotated, and filled so the page's
+   ruled lines do not run through their content.
+   The blanket rule has to outrank the base style's 5-colour card cycling, so it
+   carries the same weight as the tone rules below (which then win on order). */
+html[data-style="notebook"] .card-grid { gap: 16px; margin: 38px 0 52px; }
+html[data-style="notebook"] .card-grid .article-card:nth-child(n) {
+  padding: 20px 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-note-yellow);
+  box-shadow: none;
+  transform: rotate(-.35deg);
+  transform-origin: center;
+  -webkit-clip-path: var(--nb-torn-a);
+  clip-path: var(--nb-torn-a);
+}
+html[data-style="notebook"] .card-grid .article-card:nth-child(even) {
+  transform: rotate(.4deg);
+  -webkit-clip-path: var(--nb-torn-b);
+  clip-path: var(--nb-torn-b);
+}
+/* The sticky-note paper carries the emphasis; titles stay free of highlighter fill. */
+html[data-style="notebook"] .article-card h4 {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-family: var(--nb-hand);
+  font-size: 1.12em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+html[data-style="notebook"] .article-card h4 + :is(p, ul, ol, dl, div, blockquote) { margin-top: 12px; }
+html[data-style="notebook"] .article-card p,
+html[data-style="notebook"] .article-card li {
+  font-size: .88em;
+  line-height: 1.75;
+}
+html[data-style="notebook"] .card-label {
+  margin: 0 0 10px;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .68em;
+  font-weight: 600;
+  letter-spacing: .14em;
+}
+html[data-style="notebook"] .article-card .card-icon { display: none; }
+
+html[data-style="notebook"] .card-grid .article-card.tone-surface { background: var(--nb-paper); }
+html[data-style="notebook"] .card-grid .article-card.tone-tint {
+  border-color: transparent;
+  background: var(--nb-highlight);
+}
+html[data-style="notebook"] .card-grid .article-card.tone-ink {
+  border-color: transparent;
+  background: var(--nb-ink);
+  color: var(--nb-paper);
+}
+html[data-style="notebook"] .card-grid .article-card.tone-ink h4,
+html[data-style="notebook"] .card-grid .article-card.tone-ink p,
+html[data-style="notebook"] .card-grid .article-card.tone-ink li,
+html[data-style="notebook"] .card-grid .article-card.tone-ink a,
+html[data-style="notebook"] .card-grid .article-card.tone-ink strong { color: inherit; }
+html[data-style="notebook"] .card-grid .article-card.tone-ink .card-label { color: inherit; opacity: .7; }
+html[data-style="notebook"] .card-grid .article-card.tone-accent {
+  border-color: transparent;
+  background: var(--nb-accent);
+  color: var(--nb-accent-ink);
+}
+html[data-style="notebook"] .card-grid .article-card.tone-accent h4,
+html[data-style="notebook"] .card-grid .article-card.tone-accent p,
+html[data-style="notebook"] .card-grid .article-card.tone-accent li,
+html[data-style="notebook"] .card-grid .article-card.tone-accent a,
+html[data-style="notebook"] .card-grid .article-card.tone-accent strong { color: inherit; }
+html[data-style="notebook"] .card-grid .article-card.tone-accent .card-label { color: inherit; opacity: .75; }
+/* A tinted or solid card already carries the emphasis, and a pink swipe cannot read
+   on a pink fill, so the highlighter title stays on the paper cards only. */
+html[data-style="notebook"] .card-grid .article-card:is(.tone-tint, .tone-ink, .tone-accent) h4 {
+  padding: 0;
+  background: transparent;
+}
+
+html[data-style="notebook"] .compare-grid { gap: 16px; margin: 0 0 26px; }
+html[data-style="notebook"] .compare-card {
+  padding: 18px 20px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-note-yellow);
+  font-size: .94em;
+  line-height: 1.75;
+  transform: rotate(-.35deg);
+  -webkit-clip-path: var(--nb-torn-a);
+  clip-path: var(--nb-torn-a);
+}
+html[data-style="notebook"] .compare-card.tone-old {
+  background: var(--nb-note-yellow);
+}
+html[data-style="notebook"] .compare-card.tone-new,
+html[data-style="notebook"] .compare-card.tone-accent {
+  background: var(--nb-note);
+  transform: rotate(.35deg);
+  -webkit-clip-path: var(--nb-torn-b);
+  clip-path: var(--nb-torn-b);
+}
+
+html[data-style="notebook"] .kv-list {
+  position: relative;
+  padding: 2px 16px;
+  border-top: 0;
+  background: var(--nb-paper);
+  font-size: .95em;
+  line-height: 1.7;
+}
+html[data-style="notebook"] .kv-list::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 0;
+  left: 0;
+  height: 12px;
+  pointer-events: none;
+  background-color: var(--nb-hairline);
+  -webkit-mask-image: var(--nb-hand-line);
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-position: left center;
+  -webkit-mask-size: 72px 12px;
+  mask-image: var(--nb-hand-line);
+  mask-repeat: repeat-x;
+  mask-position: left center;
+  mask-size: 72px 12px;
+}
+html[data-style="notebook"] .kv-list dt {
+  position: relative;
+  padding: 12px 0 16px;
+  border-bottom: 0;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .74em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+html[data-style="notebook"] .kv-list dd {
+  position: relative;
+  padding: 12px 0 16px;
+  border-bottom: 0;
+}
+html[data-style="notebook"] .kv-list dt::after,
+html[data-style="notebook"] .kv-list dd::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 12px;
+  pointer-events: none;
+  background-color: var(--nb-hairline);
+  -webkit-mask-image: var(--nb-hand-line);
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-position: left center;
+  -webkit-mask-size: 72px 12px;
+  mask-image: var(--nb-hand-line);
+  mask-repeat: repeat-x;
+  mask-position: left center;
+  mask-size: 72px 12px;
+}
+
+/* A margin note: no left rule; label/title/meta on top, closed by a pink
+   double-pass rough stroke, then the body. */
+html[data-style="notebook"] .aside-card {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: .94em;
+  line-height: 1.8;
+}
+html[data-style="notebook"] .aside-head { padding-bottom: 2px; }
+html[data-style="notebook"] .aside-head::after {
+  content: "";
+  display: block;
+  height: 12px;
+  margin-top: 12px;
+  background-color: var(--nb-margin);
+  -webkit-mask-image: var(--nb-hand-line);
+  mask-image: var(--nb-hand-line);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: 72px 12px;
+  mask-size: 72px 12px;
+}
+html[data-style="notebook"] .aside-card h4 {
+  margin: 0 0 8px;
+  font-family: var(--nb-hand);
+  font-size: 1.08em;
+  font-weight: 400;
+}
+html[data-style="notebook"] .aside-meta {
+  margin-top: 4px;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .72em;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Emphasis cards are sticky notes: filled, tilted, no rule. */
+html[data-style="notebook"] .callout {
+  margin: 0 0 28px;
+  padding: 20px 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-note);
+  transform: rotate(.35deg);
+  transform-origin: center;
+  -webkit-clip-path: var(--nb-torn-a);
+  clip-path: var(--nb-torn-a);
+  font-size: 1.02em;
+  line-height: 1.8;
+}
+html[data-style="notebook"] .callout.tone-ink {
+  background: var(--nb-ink);
+  color: var(--nb-paper);
+  transform: rotate(-.4deg);
+  -webkit-clip-path: var(--nb-torn-b);
+  clip-path: var(--nb-torn-b);
+}
+html[data-style="notebook"] .callout.tone-ink .card-label { color: inherit; opacity: .7; }
+
+/* Buttons follow the theme's own button: solid pen fill, square, tracked caps. */
+html[data-style="notebook"] .card-action {
+  margin-top: 16px;
+  padding: 9px 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-ink);
+  color: var(--nb-paper);
+  font-family: var(--nb-ui);
+  font-size: .72em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+html[data-style="notebook"] .card-action:hover {
+  background: color-mix(in srgb, var(--nb-ink) 85%, transparent);
+}
+html[data-style="notebook"] .callout.tone-ink .card-action {
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+}
+html[data-style="notebook"] .callout.tone-ink .card-action:hover {
+  background: color-mix(in srgb, var(--nb-paper) 85%, transparent);
+}
+
+/* Link cards are yellow sticky notes: one colour per sheet, lightly tilted. */
+html[data-style="notebook"] .link-cards {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin: 0 0 28px;
+  border: 0;
+}
+html[data-style="notebook"] .link-card {
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-note-yellow);
+  font-size: .95em;
+  line-height: 1.6;
+  transform: rotate(-.4deg);
+  transform-origin: left center;
+  -webkit-clip-path: var(--nb-torn-b);
+  clip-path: var(--nb-torn-b);
+}
+html[data-style="notebook"] .link-card:nth-child(even) {
+  transform: rotate(.45deg);
+  -webkit-clip-path: var(--nb-torn-a);
+  clip-path: var(--nb-torn-a);
+}
+html[data-style="notebook"] .link-card:hover { transform: rotate(0); }
+html[data-style="notebook"] .link-card-title {
+  font-family: var(--nb-hand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .16em;
+}
+html[data-style="notebook"] a.link-card:hover .link-card-title { text-decoration: none; }
+html[data-style="notebook"] .link-card-note {
+  margin-top: 3px;
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .72em;
+  letter-spacing: .04em;
+}
+
+/* The table is a hand-ruled sheet: rough ink frame and hand-drawn row rules.
+   It keeps an opaque paper backing so the page's ruled lines do not read as
+   extra row dividers. */
+html[data-style="notebook"] .table-scroll {
+  position: relative;
+  margin: 36px 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-paper);
+}
+html[data-style="notebook"] .table-scroll::before {
+  content: "";
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--nb-ink-soft);
+  -webkit-mask-image: var(--nb-hand-line), var(--nb-hand-line), var(--nb-hand-line-v), var(--nb-hand-line-v);
+  -webkit-mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  -webkit-mask-position: left top, left bottom, left top, right top;
+  -webkit-mask-size: 72px 12px, 72px 12px, 12px 72px, 12px 72px;
+  mask-image: var(--nb-hand-line), var(--nb-hand-line), var(--nb-hand-line-v), var(--nb-hand-line-v);
+  mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  mask-position: left top, left bottom, left top, right top;
+  mask-size: 72px 12px, 72px 12px, 12px 72px, 12px 72px;
+}
+html[data-style="notebook"] .article-table {
+  font-size: .84em;
+  line-height: 1.6;
+}
+html[data-style="notebook"] .article-table th,
+html[data-style="notebook"] .article-table td {
+  position: relative;
+  padding: 12px 14px;
+  border-right: 0;
+  border-bottom: 0;
+  background: transparent;
+}
+html[data-style="notebook"] .article-table thead th::after,
+html[data-style="notebook"] .article-table tbody tr:not(:last-child) > *::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 12px;
+  pointer-events: none;
+  background-color: var(--nb-hairline);
+  -webkit-mask-image: var(--nb-hand-line);
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-position: left center;
+  -webkit-mask-size: 72px 12px;
+  mask-image: var(--nb-hand-line);
+  mask-repeat: repeat-x;
+  mask-position: left center;
+  mask-size: 72px 12px;
+}
+html[data-style="notebook"] .article-table thead th {
+  position: sticky;
+  background: var(--nb-highlight);
+  font-family: var(--nb-ui);
+  font-size: .8em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+html[data-style="notebook"] .article-table.has-row-header tbody th {
+  position: sticky;
+  background: transparent;
+  font-family: var(--nb-hand);
+  font-weight: 400;
+  font-size: 1em;
+}
+html[data-style="notebook"] .table-note {
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .72em;
+  letter-spacing: .02em;
+}
+
+html[data-style="notebook"] .chip {
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-chip-gray);
+  color: var(--nb-ink);
+  font-family: var(--nb-ui);
+  font-size: .82em;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+html[data-style="notebook"] .chip-high { background: var(--nb-chip-green); }
+html[data-style="notebook"] .chip-medium-high { background: var(--nb-chip-yellow); }
+html[data-style="notebook"] .chip-medium { background: var(--nb-chip-blue); }
+html[data-style="notebook"] :is(.chip-low, .chip-later) { background: var(--nb-chip-gray); }
+html[data-style="notebook"] .chip-p0 { background: var(--nb-highlight); }
+html[data-style="notebook"] .chip-p1 { background: var(--nb-chip-yellow); }
+html[data-style="notebook"] .chip-p2 { background: var(--nb-chip-blue); }
+
+html[data-style="notebook"] .flow { margin: 34px 0 50px; }
+/* Steps use a two-pass rough stroke, closer to an Excalidraw sketch than a
+   decorative wave. Four masks paint the two slightly offset pen passes around
+   the box; the connector repeats the same double-stroke construction. */
+html[data-style="notebook"] .flow li {
+  position: relative;
+  padding: 18px 20px;
+  margin: 0 0 34px;
+  border: 0;
+  border-radius: 0;
+  background: var(--nb-paper);
+}
+html[data-style="notebook"] .flow li::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  pointer-events: none;
+  background-color: var(--nb-ink-soft);
+  -webkit-mask-image: var(--nb-hand-line), var(--nb-hand-line), var(--nb-hand-line-v), var(--nb-hand-line-v);
+  mask-image: var(--nb-hand-line), var(--nb-hand-line), var(--nb-hand-line-v), var(--nb-hand-line-v);
+  -webkit-mask-size: 72px 12px, 72px 12px, 12px 72px, 12px 72px;
+  mask-size: 72px 12px, 72px 12px, 12px 72px, 12px 72px;
+  -webkit-mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  -webkit-mask-position: left -1px top -1px, left -1px bottom -1px, left -1px top -1px, right -1px top -1px;
+  mask-position: left -1px top -1px, left -1px bottom -1px, left -1px top -1px, right -1px top -1px;
+}
+html[data-style="notebook"] .flow li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+  width: 24px;
+  height: 34px;
+  transform: translateX(-50%);
+  background-color: var(--nb-ink-soft);
+  -webkit-mask-image: var(--nb-hand-arrow);
+  mask-image: var(--nb-hand-arrow);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 24px 34px;
+  mask-size: 24px 34px;
+}
+html[data-style="notebook"] .flow-index {
+  display: flex;
+  flex: 0 0 34px;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--nb-highlight);
+  color: var(--nb-ink);
+  font-family: var(--nb-hand);
+  font-size: .9em;
+  font-weight: 400;
+}
+html[data-style="notebook"] .flow-copy strong {
+  font-family: var(--nb-hand);
+  font-size: 1.1em;
+  font-weight: 400;
+}
+html[data-style="notebook"] .flow-note {
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .8em;
+  letter-spacing: .02em;
+}
+html[data-style="notebook"] .flow-loop {
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .78em;
+  letter-spacing: .02em;
+}
+
+html[data-style="notebook"] .article-image img {
+  border: 1px solid var(--nb-hairline);
+  border-radius: 0;
+}
+html[data-style="notebook"] .article-image figcaption {
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .72em;
+  letter-spacing: .02em;
+}
+html[data-style="notebook"] .article-content pre {
+  padding: 18px 20px;
+  border: 1px dotted var(--nb-hairline);
+  border-radius: 0;
+  background: var(--nb-wash);
+  font-size: .8em;
+  line-height: 1.7;
+}
+html[data-style="notebook"] .article-content code { font-family: var(--nb-ui); }
+html[data-style="notebook"] .article-content blockquote {
+  position: relative;
+  margin: 28px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--nb-hand-italic);
+  font-size: 1.12em;
+  line-height: 1.8;
+}
+html[data-style="notebook"] .article-content blockquote::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0;
+  width: 12px;
+  pointer-events: none;
+  background-color: var(--nb-margin);
+  -webkit-mask-image: var(--nb-hand-line-v);
+  -webkit-mask-repeat: repeat-y;
+  -webkit-mask-position: center top;
+  -webkit-mask-size: 12px 72px;
+  mask-image: var(--nb-hand-line-v);
+  mask-repeat: repeat-y;
+  mask-position: center top;
+  mask-size: 12px 72px;
+}
+html[data-style="notebook"] blockquote cite {
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+  font-size: .7em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+html[data-style="notebook"] .toc {
+  padding-left: 14px;
+  border-left: 1px dotted var(--nb-hairline);
+  background: var(--nb-paper);
+  color: var(--nb-ink-soft);
+  font-family: var(--nb-ui);
+}
+html[data-style="notebook"] .toc p {
+  color: var(--nb-ink);
+  letter-spacing: .14em;
+}
+html[data-style="notebook"] .toc a:hover { color: var(--nb-ink); }
+
+@media (max-width: 700px) {
+  html[data-style="notebook"] main.article-shell { padding-left: 22px; }
+  html[data-style="notebook"] .article-hero { padding-top: 44px; }
+  html[data-style="notebook"] .article-chapter h2 { font-size: 1.78em; }
+  html[data-style="notebook"] .aside-card { gap: 14px; }
+  html[data-style="notebook"] .kv-list dt::after { display: none; }
+}
+
+@media print {
+  html[data-style="notebook"] body { background-image: none; }
+  html[data-style="notebook"] .topbar,
+  html[data-style="notebook"] .toc { display: none; }
+  html[data-style="notebook"] main.article-shell { padding-left: 0; }
+  html[data-style="notebook"] main.article-shell::before { display: none; }
+}

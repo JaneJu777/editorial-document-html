@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gallery demo recorder</title>
+  <style>
+    body { margin: 0; display: grid; min-height: 100vh; place-items: center; background: #191a17; color: white; font: 14px system-ui, sans-serif; }
+    main { width: min(92vw, 960px); }
+    canvas { display: block; width: 100%; background: #f4f1e9; }
+    .actions { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+    button, a { border: 0; padding: 12px 16px; background: #d9ff57; color: #171815; font-weight: 750; text-decoration: none; cursor: pointer; }
+    a[hidden] { display: none; }
+    #status { color: #b9b9b3; }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="stage" width="1280" height="720"></canvas>
+    <div class="actions">
+      <button id="record" disabled>Create 16-second WebM</button>
+      <a id="download" download="editorial-document-html-demo.webm" hidden>Download video</a>
+      <span id="status">Loading screenshots…</span>
+    </div>
+  </main>
+  <script src="vendor/fix-webm-duration/fix-webm-duration.js"></script>
+  <script>
+    const items = [
+      ["EDITORIAL", "editorial-desktop.png", "Product strategy · decision records"],
+      ["NEWSROOM", "newsroom-desktop.png", "Reports · essays · research"],
+      ["HUMANIST BLOG", "humanist-blog-desktop.png", "Playbooks · explainers · guides"],
+      ["NOTEBOOK", "notebook-desktop.png", "Teaching notes · walkthroughs"]
+    ];
+    const canvas = document.querySelector("#stage");
+    const context = canvas.getContext("2d");
+    const recordButton = document.querySelector("#record");
+    const download = document.querySelector("#download");
+    const status = document.querySelector("#status");
+    const images = [];
+
+    function loadImages() {
+      return Promise.all(items.map(([, file]) => new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => { images.push(image); resolve(); };
+        image.onerror = reject;
+        image.src = `assets/screenshots/${file}`;
+      })));
+    }
+
+    function roundedRect(x, y, width, height, radius) {
+      context.beginPath();
+      context.roundRect(x, y, width, height, radius);
+      context.clip();
+    }
+
+    function drawFrame(index, nextIndex, mix) {
+      context.save();
+      context.fillStyle = "#f4f1e9";
+      context.fillRect(0, 0, 1280, 720);
+      context.fillStyle = "#171815";
+      context.fillRect(0, 0, 1280, 76);
+      context.fillStyle = "#d9ff57";
+      context.font = "700 17px system-ui, sans-serif";
+      context.fillText("EDITORIAL DOCUMENT HTML", 42, 47);
+      context.fillStyle = "#b9b9b3";
+      context.textAlign = "right";
+      context.font = "600 13px system-ui, sans-serif";
+      context.fillText("ONE DOCUMENT · FOUR VOICES", 1238, 46);
+      context.textAlign = "left";
+
+      context.save();
+      roundedRect(42, 104, 1196, 540, 12);
+      context.globalAlpha = 1 - mix;
+      context.drawImage(images[index], 42, 104, 1196, 831);
+      if (mix > 0) {
+        context.globalAlpha = mix;
+        context.drawImage(images[nextIndex], 42, 104, 1196, 831);
+      }
+      context.restore();
+
+      const current = mix < .5 ? index : nextIndex;
+      context.fillStyle = "rgba(23,24,21,.94)";
+      context.fillRect(42, 590, 1196, 54);
+      context.fillStyle = "#d9ff57";
+      context.font = "800 15px system-ui, sans-serif";
+      context.fillText(`${String(current + 1).padStart(2, "0")}  ${items[current][0]}`, 66, 623);
+      context.fillStyle = "#deddd6";
+      context.font = "500 14px system-ui, sans-serif";
+      context.fillText(items[current][2], 310, 623);
+      context.restore();
+    }
+
+    async function record() {
+      recordButton.disabled = true;
+      download.hidden = true;
+      status.textContent = "Recording…";
+      const stream = canvas.captureStream(30);
+      const type = MediaRecorder.isTypeSupported("video/webm;codecs=vp9") ? "video/webm;codecs=vp9" : "video/webm";
+      const recorder = new MediaRecorder(stream, { mimeType: type, videoBitsPerSecond: 4500000 });
+      const chunks = [];
+      recorder.ondataavailable = event => { if (event.data.size) chunks.push(event.data); };
+      const finished = new Promise(resolve => recorder.onstop = resolve);
+      recorder.start(1000);
+      const startedAt = performance.now();
+
+      function animate(now) {
+        const elapsed = Math.min(now - startedAt, 16000);
+        const position = elapsed / 4000;
+        const index = Math.min(3, Math.floor(position));
+        const nextIndex = Math.min(3, index + 1);
+        const within = position - index;
+        const mix = within > .83 && index < 3 ? (within - .83) / .17 : 0;
+        drawFrame(index, nextIndex, mix);
+        status.textContent = `Recording… ${Math.min(16, Math.ceil(elapsed / 1000))}/16s`;
+        if (elapsed >= 16000) {
+          clearInterval(animationTimer);
+          recorder.stop();
+        }
+      }
+
+      animate(startedAt);
+      const animationTimer = window.setInterval(() => animate(performance.now()), 100);
+      await finished;
+      const rawBlob = new Blob(chunks, { type: "video/webm" });
+      const blob = await ysFixWebmDuration(rawBlob, 16000, { logger: false });
+      download.href = URL.createObjectURL(blob);
+      download.hidden = false;
+      const size = `${(blob.size / 1024 / 1024).toFixed(1)} MB`;
+      status.textContent = `${size} · saving…`;
+      try {
+        const response = await fetch("/save-demo", { method: "POST", body: blob });
+        status.textContent = response.ok ? `${size} · saved` : `${size} · ready to download`;
+      } catch (_) {
+        status.textContent = `${size} · ready to download`;
+      }
+      recordButton.disabled = false;
+    }
+
+    loadImages().then(() => {
+      drawFrame(0, 0, 0);
+      recordButton.disabled = false;
+      status.textContent = "Ready";
+      recordButton.addEventListener("click", record);
+      if (new URLSearchParams(location.search).has("auto")) record();
+    }).catch(() => { status.textContent = "Could not load screenshots"; });
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+{
+  "style": "humanist-blog",
+  "language": "zh-CN",
+  "title": "设计复杂系统，也可以保持从容",
+  "eyebrow": "PRODUCT STRATEGY · FIELD NOTES",
+  "created_at": "2026-09-28",
+  "author": "Editorial Preview",
+  "summary": "这是一份临时风格预览，用于检查 humanist-blog 主题的阅读栏、章节色带，以及新增的卡片家族在同一篇长文中的表现。",
+  "summary_generated": true,
+  "chapters": [
+    {
+      "title": "从复杂性中建立秩序",
+      "summary": "好的文档不只承载文字，也应当帮助读者迅速识别结论、依据与下一步行动，同时保留原始内容层级。",
+      "sections": [
+        {
+          "title": "设计原则",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                "视觉表达保持克制，但关键结论需要足够明确。",
+                {"text": "颜色负责建立章节氛围，结构负责传递信息。", "bold": true}
+              ]
+            },
+            {
+              "type": "cards",
+              "items": [
+                {"title": "清晰", "icon": "🎯", "blocks": [{"type": "paragraph", "content": "通过标题、细线与稳定网格，让信息层级一眼可辨。"}]},
+                {"title": "克制", "icon": "⚖️", "blocks": [{"type": "paragraph", "content": "不使用阴影与多余装饰，避免视觉噪音。"}]},
+                {"title": "可追溯", "icon": "🔗", "blocks": [{"type": "paragraph", "content": "来源、判断与行动保持明确边界。"}]}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "关键判断",
+          "blocks": [
+            {"type": "quote", "content": "风格不应该改变内容本身，而应该让内容原有的结构变得更容易理解。", "cite": "Humanist editorial principle"},
+            {"type": "list", "ordered": false, "items": ["优先呈现结论，再展开背景与依据", "让并列信息保持相同的视觉权重", "避免为了版式而拆散完整的叙述"]},
+            {"type": "paragraph", "content": "有序步骤用编号标记，并列要点用星形标记："},
+            {"type": "list", "ordered": true, "items": ["判断材料属于哪一类文档", "决定章节颗粒度与组件映射", "按样式规范复核留白与配色"]}
+          ]
+        }
+      ]
+    },
+    {
+      "title": "把决策放进上下文",
+      "summary": "对比不同内容场景的阅读方式与优先级，并把从读取源文档到完成检查的步骤放进同一条工作流程。",
+      "sections": [
+        {
+          "title": "场景比较",
+          "blocks": [
+            {
+              "type": "table",
+              "label": "主题适用场景比较",
+              "headers": ["内容场景", "阅读方式", "适配程度", "优先级"],
+              "first_column_header": true,
+              "rows": [
+                ["产品愿景", "叙事与章节阅读", {"text": "高", "chip": "high"}, {"text": "P0", "chip": "p0"}],
+                ["研究报告", "证据与图表检索", {"text": "中高", "chip": "medium-high"}, {"text": "P1", "chip": "p1"}],
+                ["操作手册", "按步骤查阅", {"text": "中", "chip": "medium"}, {"text": "P2", "chip": "p2"}]
+              ],
+              "note": "本表仅用于预览组件视觉，不代表正式评估结果。"
+            }
+          ]
+        },
+        {
+          "title": "工作流程",
+          "blocks": [
+            {
+              "type": "flow",
+              "label": "文档生成流程",
+              "steps": [
+                {"title": "读取源文档", "note": "保留文字、层级与来源"},
+                {"title": "建立语义结构", "note": "识别章节、表格和流程"},
+                {"title": "套用主题样式", "note": "只改变呈现方式"},
+                {"title": "桌面与移动端检查", "note": "确认阅读和交互完整"}
+              ],
+              "loop": "根据预览反馈继续微调"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "卡片家族",
+      "summary": "以下组件用于并列要点、对比、定义、补充说明与强调。它们共享同一套卡片语汇，但各自承担不同的阅读任务。",
+      "sections": [
+        {
+          "title": "并列对比",
+          "blocks": [
+            {"type": "paragraph", "content": "对比卡片把两种做法放在同一水平线上，标签只有两个词，正文保持一段。"},
+            {
+              "type": "compare",
+              "label": "交付方式的差异",
+              "columns": [
+                {
+                  "label": "传统方式",
+                  "tone": "old",
+                  "content": "想法经过需求列表、用户故事与评审会议，交接一次就偏一次，进入研发的内容与最初意图已经隔了好几层。"
+                },
+                {
+                  "label": "AI 原生方式",
+                  "tone": "new",
+                  "content": "提出者直接与模型推演，并把结论写进版本化的意图文档，文档包含想要什么、为什么以及约束条件。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "快速开始",
+          "blocks": [
+            {"type": "paragraph", "content": "定义型信息适合用键值卡片：左侧是短标签，右侧是完整说明。"},
+            {
+              "type": "keyvalue",
+              "label": "环境准备",
+              "rows": [
+                {"label": "前置条件", "content": "无。"},
+                {"label": "基础设施", "content": [{"text": "约定的意图模板", "bold": true}, "，以及一个版本化的存放位置。"]},
+                {"label": "执行方式", "content": "在评审前把草稿提交到产品仓库，让下游阶段可以直接引用。"},
+                {"label": "验收标准", "content": "每一份产物都能被下一个阶段直接读取，不需要再次转述。"}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "补充说明",
+          "blocks": [
+            {"type": "paragraph", "content": "与主线有关但会打断节奏的内容，放进深色侧栏卡片，作为读者可以稍后再看的一段。"},
+            {
+              "type": "aside",
+              "label": "Sidebar",
+              "title": "遗留系统与事实来源",
+              "meta": "适用于流程产出的每一份产物。",
+              "blocks": [
+                {"type": "paragraph", "content": "既有流程其实也在跟踪产物，只是不在 Markdown 里：工作项在 Jira，需求在带合规追溯的工具里，设计在 Figma，变更审批在变更委员会。这些系统很难被替换。"},
+                {"type": "paragraph", "content": "迁移时，为每一类产物指定唯一的事实来源，其余位置只做引用，避免出现两个版本的真相。"}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "重点说明",
+          "blocks": [
+            {"type": "callout", "tone": "ink", "label": "Managed settings", "content": "在受管环境中，组织级设置需要一次明确的批准才能生效，团队不能各自绕过。"},
+            {"type": "callout", "tone": "neutral", "label": "边界", "content": "本页组件只调整呈现方式，不改写来源内容，也不复制参考站点中的品牌标识、导航或推广模块。"}
+          ]
+        },
+        {
+          "title": "延伸阅读",
+          "blocks": [
+            {"type": "paragraph", "content": "成组的短链接使用链接卡片，标题在上，路径在下。"},
+            {
+              "type": "links",
+              "items": [
+                {"title": "组织级设置与受管密钥的完整说明", "note": "治理手册 · 第 4 章"},
+                {"title": "为组织部署前的管理员决策路径", "note": "部署指南 · 第 2 章"},
+                {"title": "产出物链条与意图文档的写法", "note": "内部草稿，尚未发布"}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "卡片色调",
+          "blocks": [
+            {"type": "paragraph", "content": "卡片可以声明色调：中性面、浅色强调、深色面板与实底强调。带色调的卡片不加描边，靠底色与纸面区分；不声明色调时则是纸面上的细线卡片（见 1.1）。"},
+            {
+              "type": "cards",
+              "items": [
+                {"label": "Surface", "tone": "surface", "title": "中性纸面", "icon": "🧱", "blocks": [{"type": "paragraph", "content": "用于并列事实与普通说明。"}]},
+                {"label": "Tint", "tone": "tint", "title": "浅色强调", "icon": "🎨", "blocks": [{"type": "paragraph", "content": "用于推荐做法与新的路径。"}]},
+                {"label": "Ink", "tone": "ink", "title": "深色面板", "icon": "🌒", "blocks": [{"type": "paragraph", "content": "用于需要停下来读一段的内容。"}]},
+                {"label": "Accent", "tone": "accent", "title": "实底强调", "icon": "💠", "blocks": [{"type": "paragraph", "content": "用于整页只有一次的结论。"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "技术表达也可以温暖",
+      "summary": "让技术信息在保持清晰的同时仍然保有温度。",
+      "sections": [
+        {
+          "title": "结构示例",
+          "blocks": [
+            {"type": "paragraph", "content": "卡片区块只描述语义，颜色与圆角由样式决定，因此同一份内容可以切换成其他主题。"},
+            {"type": "code", "language": "json", "text": "{\n  \"type\": \"compare\",\n  \"columns\": [\n    {\"label\": \"传统方式\", \"tone\": \"old\", \"content\": \"…\"},\n    {\"label\": \"AI 原生方式\", \"tone\": \"new\", \"content\": \"…\"}\n  ]\n}"}
+          ]
+        }
+      ]
+    }
+  ]
+}

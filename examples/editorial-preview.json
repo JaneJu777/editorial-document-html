@@ -1,0 +1,92 @@
+{
+  "style": "editorial",
+  "language": "zh-CN",
+  "title": "从信号到决策：产品策略评审手册",
+  "eyebrow": "PRODUCT OPERATIONS · DECISION MEMO",
+  "created_at": "2026-09-29",
+  "author": "Editorial Preview",
+  "summary": "一份面向产品团队的结构化评审示例：先统一问题定义，再比较方案，最后把结论转成可追踪的行动。",
+  "chapters": [
+    {
+      "title": "先定义真正的问题",
+      "summary": "评审不是收集更多意见，而是把分散信号压缩成一个可以被验证的判断。",
+      "sections": [
+        {
+          "title": "三个判断维度",
+          "blocks": [
+            {
+              "type": "cards",
+              "items": [
+                {"title": "用户价值", "content": "问题是否高频、明确，并且值得用户改变现有习惯。"},
+                {"title": "业务杠杆", "content": "方案是否推动留存、效率或收入，而不只是增加功能数量。"},
+                {"title": "交付把握", "content": "团队是否拥有足够证据、能力和时间把承诺兑现。"}
+              ]
+            },
+            {"type": "quote", "content": "一个清晰的问题陈述，应该让团队知道现在不做什么。", "cite": "评审原则"}
+          ]
+        },
+        {
+          "title": "证据清单",
+          "blocks": [
+            {
+              "type": "keyvalue",
+              "label": "评审输入",
+              "rows": [
+                {"label": "用户信号", "content": "访谈、行为数据与支持请求中的重复模式。"},
+                {"label": "业务约束", "content": "目标、成本、合规边界与时间窗口。"},
+                {"label": "成功标准", "content": "上线前约定可观察的领先指标和停止条件。"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "把选择放在同一张桌面上",
+      "summary": "比较方案时保持相同的评价维度，避免一个方案谈愿景、另一个方案只谈成本。",
+      "sections": [
+        {
+          "title": "方案比较",
+          "blocks": [
+            {
+              "type": "table",
+              "label": "候选方案评估",
+              "headers": ["方案", "用户价值", "实施复杂度", "优先级"],
+              "first_column_header": true,
+              "rows": [
+                ["优化现有路径", {"text": "高", "chip": "high"}, "中", {"text": "P0", "chip": "p0"}],
+                ["增加引导层", {"text": "中高", "chip": "medium-high"}, "低", {"text": "P1", "chip": "p1"}],
+                ["重建完整流程", "高", "高", {"text": "P2", "chip": "p2"}]
+              ],
+              "note": "示例数据仅用于展示正式评审文档的层级与组件。"
+            },
+            {
+              "type": "compare",
+              "label": "决策方式",
+              "columns": [
+                {"label": "意见驱动", "tone": "old", "content": "先讨论偏好，再寻找能够支持偏好的理由。"},
+                {"label": "证据驱动", "tone": "new", "content": "先约定判断标准，再用相同证据比较不同方案。"}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "形成决策记录",
+          "blocks": [
+            {
+              "type": "flow",
+              "label": "评审闭环",
+              "steps": [
+                {"title": "收集信号", "note": "保留来源与时间"},
+                {"title": "提出假设", "note": "明确尚未验证的部分"},
+                {"title": "比较方案", "note": "使用同一组标准"},
+                {"title": "记录决定", "note": "写清负责人和复盘时间"}
+              ]
+            },
+            {"type": "callout", "tone": "ink", "label": "Decision", "content": "结论必须同时包含选择、理由、风险与下一次重新判断的条件。"}
+          ]
+        }
+      ]
+    }
+  ]
+}

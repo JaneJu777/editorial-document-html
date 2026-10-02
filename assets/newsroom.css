@@ -1,0 +1,441 @@
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('__FONT_DIR__/SourceSerif4-opsz-wght.ttf') format('truetype');
+}
+
+/* Newsroom: a single-article adaptation of the supplied broadsheet reference.
+   It does not reproduce the source publication's masthead or promotional UI. */
+html[data-style="newsroom"] {
+  --page: #fdfcf3;
+  --ink: #000;
+  --muted: #6e6e6e;
+  --line: #d9d9d9;
+  --soft: #fdfbe4;
+  --table: #fff;
+  --table-head: #fdfbe4;
+  --news-serif: 'Plantin', 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
+  --news-sans: 'Helvetica Neue', Inter, Helvetica, Arial, sans-serif;
+}
+
+html[data-style="newsroom"][data-theme="dark"] {
+  --page: #211f1a;
+  --ink: #f5f0df;
+  --muted: #bdb6a6;
+  --line: #5a554b;
+  --soft: #302d25;
+  --table: #28261f;
+  --table-head: #302d25;
+}
+
+html[data-style="newsroom"] body {
+  font-family: var(--news-serif);
+  letter-spacing: .01em;
+}
+
+html[data-style="newsroom"] .topbar {
+  height: 52px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding-inline: 32px;
+}
+
+html[data-style="newsroom"][data-theme="dark"] .topbar {
+  background: #28261f;
+}
+
+html[data-style="newsroom"] .topbar-actions { gap: 12px; }
+html[data-style="newsroom"] .topbar button,
+html[data-style="newsroom"] .topbar select {
+  font-family: var(--news-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border-radius: 0;
+}
+
+html[data-style="newsroom"] .article-shell {
+  width: min(100% - 64px, 1000px);
+  margin-bottom: 96px;
+}
+
+html[data-style="newsroom"] .article-hero {
+  padding-top: 56px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--line);
+}
+
+html[data-style="newsroom"] .eyebrow {
+  margin-bottom: 16px;
+  color: var(--ink);
+  font-family: var(--news-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+html[data-style="newsroom"] .article-hero h1 {
+  max-width: 850px;
+  margin-bottom: 20px;
+  font-family: var(--news-serif);
+  font-size: clamp(38px, 3.5vw, 50px);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.12;
+  text-align: left;
+}
+
+html[data-style="newsroom"] .byline {
+  color: var(--muted);
+  font-family: var(--news-serif);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+
+html[data-style="newsroom"] .summary {
+  margin: 0 0 68px;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--soft);
+  font-family: var(--news-serif);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+html[data-style="newsroom"] .generated-label {
+  font-family: var(--news-sans);
+  letter-spacing: .08em;
+}
+
+html[data-style="newsroom"] .article-content {
+  font-family: var(--news-serif);
+  font-size: calc(17px * var(--font-scale));
+  line-height: 1.52;
+}
+
+html[data-style="newsroom"] .article-chapter {
+  margin-bottom: 80px;
+}
+
+html[data-style="newsroom"] .article-chapter h2 {
+  gap: 14px;
+  margin-bottom: 34px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+  font-family: var(--news-serif);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+
+html[data-style="newsroom"] .article-chapter h2::after { display: none; }
+/* The chapter numeral is display type, not a utility label: it takes the
+   newsroom serif stack and must sit above the section numeral (24px) in size. */
+html[data-style="newsroom"] .article-chapter h2 span {
+  align-self: flex-start;
+  padding-top: 2px;
+  color: var(--muted);
+  font-family: var(--news-serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-style="newsroom"] .article-section { margin-bottom: 50px; }
+html[data-style="newsroom"] .article-section h3 {
+  margin-bottom: 18px;
+  font-family: var(--news-serif);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+}
+
+html[data-style="newsroom"] .article-content h4 {
+  margin: 26px 0 10px;
+  font-family: var(--news-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+html[data-style="newsroom"] .article-content p { margin-bottom: 18px; }
+html[data-style="newsroom"] .article-list { margin: 12px 0 24px; }
+html[data-style="newsroom"] .article-content ul > li::marker { color: var(--ink); }
+html[data-style="newsroom"] .article-content a { text-decoration-color: var(--ink); }
+
+/* Print-like card grid: rules carry structure, not pastel fills or shadows. */
+html[data-style="newsroom"] .card-grid {
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 36px 0 48px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+html[data-style="newsroom"] .article-card .card-icon { display: none; }
+/* Comparison panels: one on white, one on the cream highlight, both ruled. */
+html[data-style="newsroom"] .compare-card { border-color: var(--line); }
+html[data-style="newsroom"] .compare-card.tone-old { background: var(--soft); }
+html[data-style="newsroom"] .compare-card.tone-new,
+html[data-style="newsroom"] .compare-card.tone-accent { background: #fff; }
+html[data-style="newsroom"][data-theme="dark"] .compare-card.tone-new,
+html[data-style="newsroom"][data-theme="dark"] .compare-card.tone-accent { background: var(--table); }
+html[data-style="newsroom"] .article-card:nth-child(n) {
+  padding: 20px 18px;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-style="newsroom"] .article-card:nth-child(3n) { border-right: 0; }
+html[data-style="newsroom"] .article-card h4 {
+  font-family: var(--news-serif);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+}
+html[data-style="newsroom"] .article-card p,
+html[data-style="newsroom"] .article-card li { font-size: .88em; }
+
+/* Monochrome tone steps: white, cream highlight, boxed highlight, ink panel.
+   Without these a `tone` does nothing here, because the column cards are unfilled. */
+html[data-style="newsroom"] .article-card.tone-surface { background: #fff; }
+html[data-style="newsroom"] .article-card.tone-tint { background: var(--soft); }
+html[data-style="newsroom"] .article-card.tone-ink { background: var(--ink); color: var(--page); }
+html[data-style="newsroom"] .article-card.tone-ink .card-label { color: inherit; opacity: .7; }
+html[data-style="newsroom"] .article-card.tone-accent {
+  background: var(--soft);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+html[data-style="newsroom"] .article-card.tone-accent,
+html[data-style="newsroom"] .article-card.tone-accent h4,
+html[data-style="newsroom"] .article-card.tone-accent p,
+html[data-style="newsroom"] .article-card.tone-accent li { color: var(--ink); }
+html[data-style="newsroom"] .article-card.tone-accent .card-label { color: var(--muted); }
+html[data-style="newsroom"][data-theme="dark"] .article-card.tone-surface { background: var(--table); }
+
+/* The rest of the card family follows the same print rules as the grid above:
+   square corners, hairlines instead of boxes, and no gutters between panels. */
+html[data-style="newsroom"] .compare-grid {
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+html[data-style="newsroom"] .compare-card {
+  padding: 20px 18px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  font-size: .92em;
+}
+html[data-style="newsroom"] .compare-card:last-child { border-right: 0; }
+
+html[data-style="newsroom"] .aside-card {
+  padding: 22px 24px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--soft);
+  font-size: .94em;
+}
+html[data-style="newsroom"] .aside-card h4 {
+  margin: 0 0 6px;
+  font-family: var(--news-serif);
+  font-size: 1.06em;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+html[data-style="newsroom"] .aside-meta {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-family: var(--news-sans);
+  font-size: .74em;
+  letter-spacing: .03em;
+}
+
+html[data-style="newsroom"] .callout {
+  padding: 22px 24px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--soft);
+  font-size: 1em;
+}
+html[data-style="newsroom"] .callout.tone-ink {
+  border: 0;
+  background: var(--ink);
+  color: var(--page);
+}
+html[data-style="newsroom"] .callout.tone-ink .card-label { color: inherit; opacity: .7; }
+html[data-style="newsroom"] .card-action {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--page);
+  font-family: var(--news-sans);
+  font-size: .76em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+html[data-style="newsroom"] .callout.tone-ink .card-action { background: var(--page); color: var(--ink); }
+
+/* One link per row: a ruled index, not a two-up grid. */
+html[data-style="newsroom"] .link-cards {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+html[data-style="newsroom"] .link-card {
+  padding: 14px 0;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--news-serif);
+  font-size: .95em;
+}
+html[data-style="newsroom"] .link-card:nth-child(n + 2) { border-top: 1px solid var(--line); }
+html[data-style="newsroom"] a.link-card .link-card-title {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+}
+html[data-style="newsroom"] a.link-card:hover .link-card-title { text-decoration-color: var(--ink); }
+html[data-style="newsroom"] .link-card-note {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-family: var(--news-sans);
+  font-size: .74em;
+  letter-spacing: .02em;
+  word-break: break-word;
+}
+
+/* Micro labels read as sans caps throughout the family. */
+html[data-style="newsroom"] :is(.article-card, .compare-card, .aside-card, .callout) .card-label,
+html[data-style="newsroom"] .kv-list dt {
+  font-family: var(--news-sans);
+  font-size: .72em;
+  font-weight: 700;
+  letter-spacing: .075em;
+}
+
+html[data-style="newsroom"] .table-scroll {
+  margin-top: 32px;
+  border-color: var(--ink);
+  border-radius: 0;
+  background: var(--table);
+}
+html[data-style="newsroom"] .article-table {
+  font-family: var(--news-serif);
+  font-size: .82em;
+}
+html[data-style="newsroom"] .article-table th,
+html[data-style="newsroom"] .article-table td { padding: 13px 14px; }
+html[data-style="newsroom"] .article-table thead th {
+  background: var(--table-head);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--news-sans);
+  font-size: .82em;
+  font-weight: 700;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+html[data-style="newsroom"] .article-table.has-row-header tbody th { color: var(--ink); }
+
+/* Existing chip meanings remain readable without importing a second palette. */
+html[data-style="newsroom"] .chip {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--news-sans);
+  font-size: .8em;
+  letter-spacing: .02em;
+}
+html[data-style="newsroom"] .chip-p0,
+html[data-style="newsroom"] .chip-high {
+  border-color: var(--ink);
+  font-weight: 700;
+}
+html[data-style="newsroom"] .chip-low,
+html[data-style="newsroom"] .chip-later { color: var(--muted); }
+
+html[data-style="newsroom"] .flow li {
+  margin-bottom: 12px;
+  padding: 15px 18px;
+  border-radius: 0;
+  background: var(--table);
+}
+html[data-style="newsroom"] .flow li:not(:last-child)::after { bottom: -16px; }
+html[data-style="newsroom"] .flow-index {
+  color: var(--ink);
+  font-family: var(--news-sans);
+  font-size: .72em;
+}
+html[data-style="newsroom"] .flow-copy strong { font-weight: 700; }
+
+html[data-style="newsroom"] .article-image img { border-radius: 0; }
+html[data-style="newsroom"] .article-image figcaption,
+html[data-style="newsroom"] .table-note {
+  font-family: var(--news-sans);
+  font-size: .72em;
+  letter-spacing: .02em;
+}
+html[data-style="newsroom"] .article-content blockquote {
+  border-left: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  font-size: 1.14em;
+}
+
+html[data-style="newsroom"] .toc {
+  width: 174px;
+  padding-left: 15px;
+  border-left: 1px solid var(--line);
+  font-family: var(--news-sans);
+  font-size: 11px;
+  line-height: 1.35;
+}
+html[data-style="newsroom"] .toc p {
+  color: var(--ink);
+  letter-spacing: .08em;
+}
+
+@media (max-width: 700px) {
+  html[data-style="newsroom"] .article-shell { width: min(100% - 36px, 1000px); }
+  html[data-style="newsroom"] .article-hero { padding-top: 42px; }
+  html[data-style="newsroom"] .article-hero h1 { font-size: clamp(34px, 8vw, 44px); }
+  html[data-style="newsroom"] .article-chapter h2 { font-size: 28px; }
+  html[data-style="newsroom"] .article-chapter h2 span { font-size: 30px; }
+  html[data-style="newsroom"] .card-grid { grid-template-columns: 1fr; }
+  html[data-style="newsroom"] .article-card:nth-child(n) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  html[data-style="newsroom"] .article-card:last-child { border-bottom: 0; }
+  /* Stacked panels divide on the horizontal axis, so the column rules go away. */
+  html[data-style="newsroom"] .compare-card:nth-child(n) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  html[data-style="newsroom"] .compare-card:last-child { border-bottom: 0; }
+}

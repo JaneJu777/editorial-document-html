@@ -1,0 +1,638 @@
+html[data-style="humanist-blog"] {
+  --hb-paper: #faf9f5;
+  --hb-ink: #141413;
+  --hb-muted: #5e5d59;
+  --hb-line: color-mix(in srgb, var(--hb-ink) 18%, transparent);
+  --hb-soft: #f2f0e9;
+  --hb-accent: #c66b4e;
+  --hb-accent-soft: #f1e1d8;
+  --hb-serif: Newsreader, "Noto Serif SC", Georgia, serif;
+  --hb-sans: Inter, "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  --hb-panel: #141413;
+  --hb-on-panel: #faf9f5;
+  --hb-on-panel-muted: #b0aea5;
+  --hb-on-panel-body: #e8e6dc;
+  --hb-ink-soft: #3b3a36;
+  --hb-surface: #f1efe8;
+  --hb-surface-tint: #f3e3dc;
+  --hb-label: #6b6a64;
+  --hb-accent-deep: #b4553a;
+  --hb-band-1: #dbe5ef;
+  --hb-band-2: #e0dcec;
+  --hb-band-3: #f1d9cc;
+  --hb-band-4: #dfe8e3;
+  --hb-band-5: #dfe6d3;
+  --hb-band-6: #ece7da;
+  --hb-band-ink: #141413;
+  --hb-band-muted: #3b3a36;
+  --hb-band-number: rgb(0 0 0 / 30%);
+}
+
+html[data-style="humanist-blog"][data-theme="dark"] {
+  --hb-paper: #1d1c19;
+  --hb-ink: #f3f0e8;
+  --hb-muted: #b9b5ab;
+  --hb-line: color-mix(in srgb, var(--hb-ink) 22%, transparent);
+  --hb-soft: #292722;
+  --hb-accent: #df8b6c;
+  --hb-accent-soft: #432d25;
+  --hb-panel: #121110;
+  --hb-on-panel: #f3f0e8;
+  --hb-on-panel-muted: #9d998f;
+  --hb-on-panel-body: #ded9cd;
+  --hb-ink-soft: #cbc7bd;
+  --hb-surface: #292722;
+  --hb-surface-tint: #3d2b23;
+  --hb-label: #9b978c;
+  --hb-accent-deep: #e2a189;
+  --hb-band-1: #27333d;
+  --hb-band-2: #302c3d;
+  --hb-band-3: #402f28;
+  --hb-band-4: #22302b;
+  --hb-band-5: #2a3020;
+  --hb-band-6: #302c24;
+  --hb-band-ink: #f3f0e8;
+  --hb-band-muted: #cbc7bd;
+  --hb-band-number: #8b877d;
+}
+
+html[data-style="humanist-blog"] body {
+  background: var(--hb-paper);
+  color: var(--hb-ink);
+  font-family: var(--hb-sans);
+}
+
+html[data-style="humanist-blog"] .topbar {
+  height: 64px;
+  padding: 0 max(24px, calc((100vw - 1440px) / 2));
+  border-bottom-color: var(--hb-line);
+  background: color-mix(in srgb, var(--hb-paper) 94%, transparent);
+  backdrop-filter: blur(14px);
+}
+html[data-style="humanist-blog"] .topbar button,
+html[data-style="humanist-blog"] .topbar select { color: var(--hb-muted); }
+html[data-style="humanist-blog"] .topbar button:hover,
+html[data-style="humanist-blog"] .topbar select:not(:disabled):hover { color: var(--hb-ink); }
+html[data-style="humanist-blog"] .topbar-divider { background: var(--hb-line); }
+
+html[data-style="humanist-blog"] .article-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 140px;
+}
+
+html[data-style="humanist-blog"] .article-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  gap: 32px 72px;
+  width: min(100% - 48px, 900px);
+  margin: 0 auto;
+  padding: 96px 0 72px;
+  border-bottom: 1px solid var(--hb-line);
+}
+html[data-style="humanist-blog"] .eyebrow {
+  grid-column: 1;
+  margin: 0;
+  color: var(--hb-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+html[data-style="humanist-blog"] .article-hero h1 {
+  grid-column: 1;
+  max-width: 760px;
+  margin: 0;
+  color: var(--hb-ink);
+  font-family: var(--hb-serif);
+  font-size: clamp(48px, 4.2vw, 68px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+html[data-style="humanist-blog"] .byline {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: end;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--hb-line);
+  color: var(--hb-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+html[data-style="humanist-blog"] .byline [aria-hidden="true"] { display: none; }
+
+html[data-style="humanist-blog"] .summary {
+  width: min(100% - 48px, 900px);
+  margin: 64px auto 88px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--hb-muted);
+  font-size: 23px;
+  line-height: 1.5;
+}
+html[data-style="humanist-blog"] .generated-label {
+  margin-bottom: 18px;
+  color: var(--hb-accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+}
+
+html[data-style="humanist-blog"] .article-content {
+  width: min(100% - 48px, 900px);
+  margin: 0 auto;
+  color: var(--hb-ink);
+  font-family: var(--hb-sans);
+  font-size: calc(18px * var(--font-scale));
+  line-height: 1.65;
+}
+html[data-style="humanist-blog"] .article-chapter {
+  margin: 0 0 112px;
+  scroll-margin-top: 88px;
+}
+html[data-style="humanist-blog"] .chapter-band {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+  margin: 0 0 52px;
+  padding: 36px;
+  border-radius: 16px;
+  color: var(--hb-band-ink);
+}
+html[data-style="humanist-blog"] .chapter-band-1 { background: var(--hb-band-1); }
+html[data-style="humanist-blog"] .chapter-band-2 { background: var(--hb-band-2); }
+html[data-style="humanist-blog"] .chapter-band-3 { background: var(--hb-band-3); }
+html[data-style="humanist-blog"] .chapter-band-4 { background: var(--hb-band-4); }
+html[data-style="humanist-blog"] .chapter-band-5 { background: var(--hb-band-5); }
+html[data-style="humanist-blog"] .chapter-band-6 { background: var(--hb-band-6); }
+html[data-style="humanist-blog"] .chapter-number {
+  display: block;
+  min-width: 71px;
+  color: var(--hb-band-number);
+  font-family: var(--hb-serif);
+  font-size: 76px;
+  font-weight: 400;
+  /* 1, not .95: a line-height below 1 lets the glyph ink spill above its line box, which
+     shows up as a smaller top gap once the band stacks to one column on mobile. */
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+html[data-style="humanist-blog"] .article-chapter .chapter-band h2 {
+  display: block;
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+  color: var(--hb-band-ink);
+  font-family: var(--hb-sans);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+html[data-style="humanist-blog"] .article-chapter .chapter-band h2::after { display: none; }
+html[data-style="humanist-blog"] .chapter-summary {
+  margin: 0;
+  color: var(--hb-band-muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+html[data-style="humanist-blog"] .article-section {
+  margin: 0 0 72px;
+  scroll-margin-top: 88px;
+}
+html[data-style="humanist-blog"] .article-section h3 {
+  margin: 44px 0 28px;
+  color: var(--hb-ink);
+  font-family: var(--hb-serif);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+}
+html[data-style="humanist-blog"] .article-content h4 {
+  margin: 38px 0 14px;
+  color: var(--hb-ink);
+  font-family: var(--hb-serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+html[data-style="humanist-blog"] .article-content p { margin: 0 0 24px; }
+/* Prose margins stop at the card edge. Without this, `.article-content p` wins on
+   source order over the last-child resets and leaves a phantom 24px under the
+   final line — which reads as extra bottom padding inside bands and cards. */
+html[data-style="humanist-blog"] :is(.chapter-band, .card-grid, .compare-grid, .kv-list, .aside-card, .callout, .link-cards, .flow) :is(p, ul, ol):last-child {
+  margin-bottom: 0;
+}
+html[data-style="humanist-blog"] .article-content a {
+  color: inherit;
+  text-decoration-color: var(--hb-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+html[data-style="humanist-blog"] .article-content ul > li::marker { color: var(--hb-accent); }
+
+html[data-style="humanist-blog"] .card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 36px 0 54px;
+}
+/* Plain cards reuse the flow-step box: hairline border on the paper, and the
+   content is centred so the top and bottom padding always read as equal. */
+html[data-style="humanist-blog"] .article-card .card-icon { display: none; }
+html[data-style="humanist-blog"] .article-card:nth-child(n) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 20px;
+  border: 1px solid var(--hb-line);
+  border-radius: 12px;
+  background: var(--hb-paper);
+  color: var(--hb-ink);
+}
+html[data-style="humanist-blog"] .article-card h4 {
+  margin: 0 0 8px;
+  font-family: var(--hb-sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+html[data-style="humanist-blog"] .article-card p,
+html[data-style="humanist-blog"] .article-card li {
+  color: var(--hb-ink-soft);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+html[data-style="humanist-blog"] .article-card p { margin: 0 0 12px; }
+html[data-style="humanist-blog"] .article-card p:last-child,
+html[data-style="humanist-blog"] .article-card .article-list:last-child { margin-bottom: 0; }
+
+/* Card family: micro label, tinted/dark/accent card tones, comparison pairs,
+   key-value rows, dark side panel, emphasis callout, and link cards. */
+html[data-style="humanist-blog"] .card-label {
+  margin: 0 0 8px;
+  color: var(--hb-label);
+  font-family: var(--hb-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+html[data-style="humanist-blog"] .article-card.tone-surface { background: var(--hb-surface); }
+html[data-style="humanist-blog"] .article-card.tone-tint { background: var(--hb-surface-tint); }
+html[data-style="humanist-blog"] .article-card.tone-tint .card-label { color: var(--hb-accent-deep); }
+html[data-style="humanist-blog"] .article-card.tone-ink {
+  background: var(--hb-panel);
+  color: var(--hb-on-panel-body);
+}
+html[data-style="humanist-blog"] .article-card.tone-ink h4 { color: var(--hb-on-panel); }
+html[data-style="humanist-blog"] .article-card.tone-ink p,
+html[data-style="humanist-blog"] .article-card.tone-ink li { color: var(--hb-on-panel-body); }
+html[data-style="humanist-blog"] .article-card.tone-ink .card-label { color: var(--hb-accent); }
+html[data-style="humanist-blog"] .article-card.tone-ink .article-list li::marker { color: var(--hb-accent); }
+/* A tone already separates the card from the paper, so tone cards carry no border.
+   The dark-mode hairline on tone-ink (further down) is the one deliberate exception:
+   a deep panel on dark paper would otherwise lose its edge. */
+html[data-style="humanist-blog"] .article-card:is(.tone-surface, .tone-tint, .tone-ink, .tone-accent) { border: 0; }
+html[data-style="humanist-blog"] .article-card.tone-accent {
+  background: var(--hb-accent);
+  color: #fff;
+}
+html[data-style="humanist-blog"] .article-card.tone-accent h4,
+html[data-style="humanist-blog"] .article-card.tone-accent p,
+html[data-style="humanist-blog"] .article-card.tone-accent li { color: #fff; }
+html[data-style="humanist-blog"] .article-card.tone-accent .card-label { color: rgba(255, 255, 255, .72); }
+html[data-style="humanist-blog"] .article-card .card-label + h4 { margin-top: 0; }
+/* On the dark accent (#df8b6c) white would drop to ~2:1, so the text goes back to near-black. */
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-accent,
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-accent h4,
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-accent p,
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-accent li { color: #141413; }
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-accent .card-label { color: rgba(20, 20, 19, .62); }
+
+html[data-style="humanist-blog"] .compare-grid { gap: 10px; margin: 0 0 32px; }
+html[data-style="humanist-blog"] .compare-card {
+  padding: 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--hb-surface);
+  color: var(--hb-ink-soft);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+html[data-style="humanist-blog"] .compare-card.tone-new,
+html[data-style="humanist-blog"] .compare-card.tone-accent { background: var(--hb-surface-tint); }
+html[data-style="humanist-blog"] .compare-card.tone-new .card-label { color: var(--hb-accent-deep); }
+html[data-style="humanist-blog"] .compare-card code,
+html[data-style="humanist-blog"] .kv-list code,
+html[data-style="humanist-blog"] .aside-card code {
+  font-family: Menlo, Consolas, "SF Mono", monospace;
+  font-size: .82em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(127, 127, 127, .18);
+  color: inherit;
+}
+html[data-style="humanist-blog"] .compare-card a { color: var(--hb-ink); }
+
+html[data-style="humanist-blog"] .kv-list {
+  column-gap: 0;
+  margin: 0 0 28px;
+  border-top-color: var(--hb-line);
+  color: var(--hb-ink);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+html[data-style="humanist-blog"] .kv-list dt {
+  padding: 14px 0;
+  border-bottom-color: var(--hb-line);
+  color: var(--hb-ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  opacity: .7;
+}
+html[data-style="humanist-blog"] .kv-list dd {
+  padding: 14px 0;
+  border-bottom-color: var(--hb-line);
+  color: var(--hb-ink);
+  opacity: .88;
+}
+html[data-style="humanist-blog"] .kv-list a { color: inherit; }
+
+html[data-style="humanist-blog"] .aside-card {
+  gap: 28px;
+  margin: 0 0 32px;
+  padding: 26px 28px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--hb-panel);
+  color: var(--hb-on-panel-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+html[data-style="humanist-blog"] .aside-card .card-label { color: var(--hb-accent); }
+html[data-style="humanist-blog"] .aside-card h4 {
+  margin: 0 0 8px;
+  color: var(--hb-on-panel);
+  font-family: var(--hb-sans);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+html[data-style="humanist-blog"] .aside-meta { color: var(--hb-on-panel-muted); font-size: 12.5px; }
+html[data-style="humanist-blog"] .aside-body p { color: var(--hb-on-panel-body); }
+html[data-style="humanist-blog"] .aside-card strong,
+html[data-style="humanist-blog"] .aside-card a { color: var(--hb-on-panel); }
+html[data-style="humanist-blog"] .aside-card code { background: rgba(250, 249, 245, .14); }
+html[data-style="humanist-blog"] .aside-card pre {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #000;
+  color: var(--hb-on-panel-body);
+  font-size: 12px;
+}
+html[data-style="humanist-blog"] .aside-card .article-list li::marker { color: var(--hb-accent); }
+
+html[data-style="humanist-blog"] .callout {
+  margin: 0 0 32px;
+  padding: 24px 28px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--hb-soft);
+  color: var(--hb-ink);
+  font-size: 17px;
+  line-height: 1.5;
+}
+html[data-style="humanist-blog"] .callout.tone-ink { background: var(--hb-panel); color: var(--hb-on-panel); }
+html[data-style="humanist-blog"] .callout.tone-ink p,
+html[data-style="humanist-blog"] .callout.tone-ink strong { color: var(--hb-on-panel); }
+html[data-style="humanist-blog"] .callout.tone-ink .card-label { color: var(--hb-accent); }
+html[data-style="humanist-blog"] .callout.tone-ink code { background: rgba(250, 249, 245, .14); }
+html[data-style="humanist-blog"] .callout.has-action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+}
+html[data-style="humanist-blog"] .callout .card-action { margin-top: 0; justify-self: start; }
+html[data-style="humanist-blog"] .card-action {
+  margin-top: 14px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--hb-panel);
+  color: var(--hb-on-panel);
+  font-size: 14px;
+  font-weight: 500;
+}
+html[data-style="humanist-blog"] .callout.tone-ink .card-action { background: var(--hb-on-panel); color: #141413; }
+
+html[data-style="humanist-blog"] .link-cards { gap: 10px; margin: 0 0 32px; }
+html[data-style="humanist-blog"] .link-card {
+  padding: 12px 14px;
+  border: 1px solid var(--hb-line);
+  border-radius: 10px;
+  background: var(--hb-paper);
+  color: var(--hb-ink);
+  font-size: 14px;
+  line-height: 1.4;
+}
+html[data-style="humanist-blog"] .link-card-note {
+  margin-top: 4px;
+  color: var(--hb-muted);
+  font-family: Menlo, Consolas, "SF Mono", monospace;
+  font-size: 11px;
+  opacity: .75;
+}
+html[data-style="humanist-blog"] .link-card:hover { border-color: var(--hb-ink); }
+
+/* Trailing leading trim: the half-leading under a final line (the space between the
+   ink and the font's descent) reads as extra bottom padding. Pull it back on the
+   containers whose last line sits against the padding edge; the flex-centred boxes
+   (plain cards, flow steps) take half of the correction, which is what keeps their
+   ink optically centred. Kept last on purpose: it has to win over the resets above. */
+html[data-style="humanist-blog"] :is(.chapter-heading-copy, .compare-card, .article-card, .callout, .callout-copy, .link-card, .flow-copy) > :is(p, ul, ol, small, div, span):last-child,
+html[data-style="humanist-blog"] .aside-body > :is(p, ul, ol, small, div):last-child {
+  margin-bottom: -.15em;
+}
+
+/* On the dark paper the deep panels need a hairline to read as a deliberate surface. */
+html[data-style="humanist-blog"][data-theme="dark"] .aside-card,
+html[data-style="humanist-blog"][data-theme="dark"] .callout.tone-ink,
+html[data-style="humanist-blog"][data-theme="dark"] .article-card.tone-ink,
+html[data-style="humanist-blog"][data-theme="dark"] .article-content pre { border: 1px solid var(--hb-line); }
+/* Code keeps its dark-ink surface in both themes instead of inverting to a bright block. */
+html[data-style="humanist-blog"][data-theme="dark"] .article-content pre {
+  background: var(--hb-panel);
+  color: var(--hb-on-panel);
+}
+
+html[data-style="humanist-blog"] .table-scroll {
+  margin: 36px 0 12px;
+  border: 1px solid var(--hb-line);
+  border-radius: 12px;
+  background: var(--hb-paper);
+}
+html[data-style="humanist-blog"] .article-table {
+  font-family: var(--hb-sans);
+  font-size: .78em;
+  line-height: 1.45;
+}
+html[data-style="humanist-blog"] .article-table th,
+html[data-style="humanist-blog"] .article-table td {
+  padding: 13px 14px;
+  border-color: var(--hb-line);
+  background: var(--hb-paper);
+  vertical-align: middle;
+}
+html[data-style="humanist-blog"] .article-table thead th {
+  background: var(--hb-ink);
+  color: var(--hb-paper);
+  font-size: .76em;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+html[data-style="humanist-blog"] .article-table.has-row-header tbody th {
+  background: var(--hb-paper);
+  color: var(--hb-ink);
+}
+html[data-style="humanist-blog"] .table-note,
+html[data-style="humanist-blog"] .article-image figcaption {
+  color: var(--hb-muted);
+  font-size: .76em;
+}
+
+html[data-style="humanist-blog"] .chip {
+  border-radius: 999px;
+  padding: 3px 9px;
+  background: var(--hb-ink);
+  color: var(--hb-paper);
+  font-family: var(--hb-sans);
+  font-size: .85em;
+  font-weight: 600;
+}
+html[data-style="humanist-blog"] .chip-high,
+html[data-style="humanist-blog"] .chip-medium-high,
+html[data-style="humanist-blog"] .chip-medium {
+  background: var(--hb-accent-soft);
+  color: var(--hb-ink);
+}
+
+html[data-style="humanist-blog"] .flow { margin: 36px 0 56px; }
+html[data-style="humanist-blog"] .flow ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+html[data-style="humanist-blog"] .flow li {
+  align-items: center;
+  min-height: 0;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--hb-line);
+  border-radius: 12px;
+  background: var(--hb-paper);
+}
+html[data-style="humanist-blog"] .flow li:not(:last-child)::after { display: none; }
+html[data-style="humanist-blog"] .flow-index { color: var(--hb-accent); }
+html[data-style="humanist-blog"] .flow-loop,
+html[data-style="humanist-blog"] .flow-note { color: var(--hb-muted); }
+
+html[data-style="humanist-blog"] .article-content blockquote {
+  margin: 36px 0;
+  padding: 28px 30px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--hb-accent-soft);
+  color: var(--hb-ink);
+  font-family: var(--hb-serif);
+  font-size: 1.15em;
+  line-height: 1.5;
+}
+html[data-style="humanist-blog"] blockquote cite { color: var(--hb-muted); }
+html[data-style="humanist-blog"] .article-content pre {
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--hb-ink);
+  color: var(--hb-paper);
+}
+html[data-style="humanist-blog"] .article-image img { border-radius: 12px; }
+
+html[data-style="humanist-blog"] .toc {
+  top: 96px;
+  right: 24px;
+  width: 196px;
+  padding: 18px;
+  border: 1px solid var(--hb-line);
+  border-radius: 12px;
+  background: var(--hb-paper);
+  color: var(--hb-muted);
+  font-family: var(--hb-sans);
+}
+html[data-style="humanist-blog"] .toc p {
+  color: var(--hb-ink);
+  letter-spacing: .08em;
+}
+html[data-style="humanist-blog"] .toc a:hover { color: var(--hb-accent); }
+
+@media (max-width: 900px) {
+  html[data-style="humanist-blog"] .article-hero {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 900px);
+    padding: 72px 0 56px;
+  }
+  html[data-style="humanist-blog"] .article-hero h1 { max-width: 100%; }
+  html[data-style="humanist-blog"] .byline {
+    grid-column: 1;
+    grid-row: auto;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--hb-line);
+    border-left: 0;
+  }
+  html[data-style="humanist-blog"] .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html[data-style="humanist-blog"] .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  html[data-style="humanist-blog"] .topbar { padding: 0 18px; }
+  html[data-style="humanist-blog"] .article-hero { width: min(100% - 36px, 900px); }
+  html[data-style="humanist-blog"] .article-hero h1 { font-size: clamp(42px, 12vw, 56px); }
+  html[data-style="humanist-blog"] .summary,
+  html[data-style="humanist-blog"] .article-content { width: min(100% - 36px, 640px); }
+  html[data-style="humanist-blog"] .summary { margin: 48px auto 68px; font-size: 20px; }
+  html[data-style="humanist-blog"] .chapter-band {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 26px 24px;
+  }
+  html[data-style="humanist-blog"] .chapter-number { font-size: 56px; }
+  html[data-style="humanist-blog"] .article-chapter .chapter-band h2 { font-size: 30px; }
+  html[data-style="humanist-blog"] .article-section h3 { font-size: 27px; }
+  html[data-style="humanist-blog"] .card-grid,
+  html[data-style="humanist-blog"] .flow ol { grid-template-columns: 1fr; }
+  html[data-style="humanist-blog"] .compare-grid { grid-template-columns: minmax(0, 1fr); }
+  html[data-style="humanist-blog"] .callout { padding: 22px; }
+  html[data-style="humanist-blog"] .callout.has-action { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  html[data-style="humanist-blog"] .aside-card { padding: 22px 22px; }
+}
+
+@media print {
+  html[data-style="humanist-blog"] .topbar,
+  html[data-style="humanist-blog"] .toc { display: none; }
+  html[data-style="humanist-blog"] body,
+  html[data-style="humanist-blog"] .article-card,
+  html[data-style="humanist-blog"] .compare-card,
+  html[data-style="humanist-blog"] .aside-card,
+  html[data-style="humanist-blog"] .callout,
+  html[data-style="humanist-blog"] .link-card,
+  html[data-style="humanist-blog"] .flow li { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

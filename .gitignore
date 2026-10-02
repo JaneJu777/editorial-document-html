@@ -1,0 +1,8 @@
+.DS_Store
+.workbuddy/
+__pycache__/
+*.py[cod]
+_site/
+preview/
+*.zip
+

@@ -1,0 +1,85 @@
+{
+  "style": "notebook",
+  "language": "zh-CN",
+  "title": "一次设计工作坊的现场笔记",
+  "eyebrow": "WORKSHOP NOTES · DAY 01",
+  "created_at": "2026-09-29",
+  "author": "Notebook Preview",
+  "summary": "今天先不急着画完整方案。我们把问题、线索和下一轮实验写在同一页上，看看哪些判断值得继续。",
+  "chapters": [
+    {
+      "title": "先把桌面上的线索摊开",
+      "summary": "现场笔记允许不完整，但每条记录都要能说明它来自哪里。",
+      "sections": [
+        {
+          "title": "开场问题",
+          "blocks": [
+            {"type": "paragraph", "content": ["我们真正要解决的不是“页面不够丰富”，而是", {"text": "读者不知道下一步该看什么", "bold": true}, "。"]},
+            {
+              "type": "cards",
+              "items": [
+                {"title": "看到的", "content": "读者先扫标题，再回头寻找证据。"},
+                {"title": "听到的", "content": "信息很多，但关键判断容易埋在段落中。"},
+                {"title": "还不知道", "content": "哪一种提示能帮助读者继续，而不会制造噪音。"}
+              ]
+            },
+            {"type": "quote", "content": "先记录真实发生的，再讨论我们希望发生什么。", "cite": "工作坊提醒"}
+          ]
+        },
+        {
+          "title": "把假设贴到墙上",
+          "blocks": [
+            {
+              "type": "compare",
+              "label": "两张便签",
+              "columns": [
+                {"label": "原来的想法", "tone": "old", "content": "增加更多视觉元素，让页面看起来更有设计感。"},
+                {"label": "现在的假设", "tone": "new", "content": "减少装饰，用结构和标记帮助读者找到判断。"}
+              ]
+            },
+            {"type": "callout", "tone": "neutral", "label": "先试这个", "content": "只改一条阅读路径：标题 → 结论 → 证据 → 下一步。其他内容暂时不动。"}
+          ]
+        }
+      ]
+    },
+    {
+      "title": "用一个小实验继续",
+      "summary": "把工作拆成可以在今天完成、明天观察的步骤。",
+      "sections": [
+        {
+          "title": "今天的流程",
+          "blocks": [
+            {
+              "type": "flow",
+              "label": "快速实验",
+              "steps": [
+                {"title": "圈出关键判断", "note": "只标记真正影响决定的句子"},
+                {"title": "整理阅读顺序", "note": "让标题和内容一一对应"},
+                {"title": "做一个低保真版本", "note": "不用补齐所有细节"},
+                {"title": "找两个人试读", "note": "记录停顿和回看的位置"}
+              ],
+              "loop": "把观察带回下一轮笔记"
+            }
+          ]
+        },
+        {
+          "title": "离开前确认",
+          "blocks": [
+            {
+              "type": "keyvalue",
+              "label": "明天继续",
+              "rows": [
+                {"label": "保留", "content": "原始反馈和被否定的方案。"},
+                {"label": "负责人", "content": "每个实验只指定一位跟进者。"},
+                {"label": "观察点", "content": "读者是否能在一分钟内说出结论。"},
+                {"label": "复盘时间", "content": "明天下午四点，十五分钟。"}
+              ]
+            },
+            {"type": "list", "ordered": false, "items": ["不要把猜测写成事实", "不要为了好看拆散完整句子", "如果看不懂，先改结构，再加说明"]},
+            {"type": "callout", "tone": "ink", "label": "带走一句话", "content": "笔记不是最终答案，它是下一次更好判断的起点。"}
+          ]
+        }
+      ]
+    }
+  ]
+}

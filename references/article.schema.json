@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/editorial-document-html/article.schema.json",
+  "title": "Editorial document article",
+  "type": "object",
+  "required": ["title", "chapters"],
+  "properties": {
+    "style": {"enum": ["editorial", "newsroom", "humanist-blog", "notebook", "claude-blog"]},
+    "language": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "eyebrow": {"$ref": "#/$defs/inline"},
+    "created_at": {"type": "string", "minLength": 1},
+    "author": {"type": "string", "minLength": 1},
+    "summary": {"$ref": "#/$defs/inline"},
+    "summary_generated": {"type": "boolean"},
+    "chapters": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/chapter"}},
+    "translations": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/translatedArticle"}
+    },
+    "mapping_report": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "inlineRun": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": {"type": "string"},
+        "bold": {"type": "boolean"},
+        "href": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "inline": {
+      "oneOf": [
+        {"type": "string"},
+        {"$ref": "#/$defs/inlineRun"},
+        {"type": "array", "items": {"oneOf": [{"type": "string"}, {"$ref": "#/$defs/inlineRun"}]}}
+      ]
+    },
+    "blocks": {"type": "array", "items": {"$ref": "#/$defs/block"}},
+    "body": {
+      "oneOf": [
+        {"required": ["content"]},
+        {"required": ["blocks"]}
+      ]
+    },
+    "block": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["paragraph", "list", "heading", "cards", "compare", "keyvalue", "aside", "callout", "links", "table", "flow", "image", "quote", "code"]},
+        "content": {"$ref": "#/$defs/inline"},
+        "text": {"type": "string"},
+        "language": {"type": "string"},
+        "ordered": {"type": "boolean"},
+        "items": {"type": "array"},
+        "columns": {"type": "array", "minItems": 2, "maxItems": 3},
+        "rows": {"type": "array"},
+        "headers": {"type": "array", "minItems": 1},
+        "first_column_header": {"type": "boolean"},
+        "steps": {"type": "array", "minItems": 2},
+        "loop": {"$ref": "#/$defs/inline"},
+        "label": {"$ref": "#/$defs/inline"},
+        "title": {"$ref": "#/$defs/inline"},
+        "meta": {"$ref": "#/$defs/inline"},
+        "tone": {"type": "string"},
+        "layout": {"enum": ["stacked"]},
+        "action": {"type": "object"},
+        "blocks": {"$ref": "#/$defs/blocks"},
+        "src": {"type": "string", "minLength": 1},
+        "alt": {"type": "string", "minLength": 1},
+        "caption": {"$ref": "#/$defs/inline"},
+        "cite": {"$ref": "#/$defs/inline"},
+        "note": {"$ref": "#/$defs/inline"}
+      },
+      "additionalProperties": false
+    },
+    "section": {
+      "type": "object",
+      "required": ["title", "blocks"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "blocks": {"$ref": "#/$defs/blocks"}
+      },
+      "additionalProperties": false
+    },
+    "chapter": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"$ref": "#/$defs/inline"},
+        "blocks": {"$ref": "#/$defs/blocks"},
+        "sections": {"type": "array", "items": {"$ref": "#/$defs/section"}}
+      },
+      "additionalProperties": false
+    },
+    "translatedArticle": {
+      "type": "object",
+      "required": ["language", "title", "chapters"],
+      "properties": {
+        "language": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "eyebrow": {"$ref": "#/$defs/inline"},
+        "created_at": {"type": "string"},
+        "author": {"type": "string"},
+        "summary": {"$ref": "#/$defs/inline"},
+        "summary_generated": {"type": "boolean"},
+        "chapters": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/chapter"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

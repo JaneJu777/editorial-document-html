@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="See one source document rendered as four source-faithful editorial HTML systems.">
+  <meta property="og:title" content="Editorial Document HTML — Live Gallery">
+  <meta property="og:description" content="One document. Four presentation systems. No source rewriting.">
+  <meta property="og:image" content="assets/screenshots/gallery-cover.png">
+  <title>Editorial Document HTML — Live Gallery</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Editorial Document HTML home">
+      <span class="wordmark-mark" aria-hidden="true">E/</span>
+      <span>Editorial Document HTML</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#gallery">Gallery</a>
+      <a href="#prompt">Prompt</a>
+      <a href="https://github.com/JaneJu777/editorial-document-html">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="kicker">SOURCE-FAITHFUL DOCUMENT RENDERING</p>
+      <h1>One document.<br><em>Four editorial voices.</em></h1>
+      <p class="hero-copy">Turn Markdown, Word, or plain text into a polished standalone article. The skill infers structure conservatively, preserves the source, and keeps presentation separate from meaning.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#gallery">Explore the gallery</a>
+        <a class="button button-secondary" href="https://github.com/JaneJu777/editorial-document-html">View on GitHub</a>
+      </div>
+      <div class="install" aria-label="Installation command">
+        <code id="install-command">git clone https://github.com/JaneJu777/editorial-document-html.git ~/.codex/skills/editorial-document-html</code>
+        <button class="copy-button" data-copy="#install-command">Copy</button>
+      </div>
+      <div class="hero-notes" aria-label="Project qualities">
+        <span>Zero runtime dependencies</span>
+        <span>Portable HTML</span>
+        <span>Responsive + print-ready</span>
+      </div>
+    </section>
+
+    <section class="before-after section" aria-labelledby="before-after-title">
+      <div class="section-heading">
+        <p class="kicker">BEFORE → AFTER</p>
+        <h2 id="before-after-title">The writing stays yours.<br>The reading experience changes.</h2>
+      </div>
+      <div class="transformation">
+        <article class="source-card">
+          <div class="card-topline"><span>source.md</span><span>3.1 KB</span></div>
+          <pre><code># 从信号到决策
+
+评审不是收集更多意见，而是把分散信号压缩成一个可以被验证的判断。
+
+## 三个判断维度
+
+- 用户价值：问题是否高频、明确
+- 业务杠杆：是否推动留存或效率
+- 交付把握：团队能否兑现承诺
+
+> 一个清晰的问题陈述，应该让团队知道现在不做什么。</code></pre>
+        </article>
+        <div class="transform-arrow" aria-hidden="true"><span>infer</span>→<span>render</span></div>
+        <article class="result-card">
+          <div class="mini-browser">
+            <div class="mini-browser-bar"><i></i><i></i><i></i></div>
+            <img src="assets/screenshots/editorial-desktop.png" alt="Editorial style rendered article">
+          </div>
+          <p><strong>Semantic structure, not a screenshot.</strong> The output remains readable, selectable, responsive, editable, printable, and accessible.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="kicker">LIVE GALLERY</p>
+          <h2 id="gallery-title">Switch the voice,<br>keep the meaning.</h2>
+        </div>
+        <div class="tour-status">
+          <button id="tour-toggle" type="button" aria-pressed="false">Pause 16-second tour</button>
+          <span id="tour-progress" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+
+      <div class="gallery-toolbar">
+        <div class="style-tabs" role="tablist" aria-label="Article style">
+          <button role="tab" aria-selected="true" data-style="editorial"><b>01</b> Editorial</button>
+          <button role="tab" aria-selected="false" data-style="newsroom"><b>02</b> Newsroom</button>
+          <button role="tab" aria-selected="false" data-style="humanist-blog"><b>03</b> Humanist</button>
+          <button role="tab" aria-selected="false" data-style="notebook"><b>04</b> Notebook</button>
+        </div>
+        <div class="viewport-tabs" aria-label="Preview viewport">
+          <button class="is-active" data-viewport="desktop" aria-label="Desktop preview">Desktop</button>
+          <button data-viewport="mobile" aria-label="Mobile preview">Mobile</button>
+        </div>
+      </div>
+
+      <div class="preview-stage" data-viewport="desktop">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span id="browser-label">editorial-preview.html</span>
+            <a id="full-example" href="previews/editorial-preview.html" target="_blank" rel="noopener">Open full example ↗</a>
+          </div>
+          <iframe id="preview-frame" title="Live article preview" src="previews/editorial-preview.html" loading="eager"></iframe>
+        </div>
+      </div>
+
+      <div class="style-caption" aria-live="polite">
+        <p id="style-name">Editorial</p>
+        <p id="style-description">A spacious product-planning system for proposals, strategy, and decision records.</p>
+      </div>
+    </section>
+
+    <section class="demo-reel section" aria-labelledby="demo-reel-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="kicker">16-SECOND DEMO</p>
+          <h2 id="demo-reel-title">Four styles,<br>one quick pass.</h2>
+        </div>
+        <p class="reel-note">A short, silent walkthrough designed for GitHub, social posts, and launch threads.</p>
+      </div>
+      <div class="reel-frame">
+        <video controls autoplay muted loop playsinline poster="assets/screenshots/gallery-cover.png">
+          <source src="assets/editorial-document-html-demo.webm" type="video/webm">
+          Your browser does not support the demo video. Use the live gallery above instead.
+        </video>
+      </div>
+    </section>
+
+    <section class="screens section" aria-labelledby="screens-title">
+      <div class="section-heading">
+        <p class="kicker">DESKTOP + MOBILE</p>
+        <h2 id="screens-title">Designed for the whole document,<br>not one polished viewport.</h2>
+      </div>
+      <div class="screen-grid">
+        <figure class="screen-card screen-wide">
+          <img src="assets/screenshots/humanist-blog-desktop.png" alt="Humanist blog style on desktop" loading="lazy">
+          <figcaption><span>Humanist / Desktop</span><span>1440 × 1000</span></figcaption>
+        </figure>
+        <figure class="screen-card screen-phone">
+          <img src="assets/screenshots/notebook-mobile.png" alt="Notebook style on mobile" loading="lazy">
+          <figcaption><span>Notebook / Mobile</span><span>390 × 844</span></figcaption>
+        </figure>
+        <figure class="screen-card screen-phone">
+          <img src="assets/screenshots/newsroom-mobile.png" alt="Newsroom style on mobile" loading="lazy">
+          <figcaption><span>Newsroom / Mobile</span><span>390 × 844</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="prompt-section section" id="prompt" aria-labelledby="prompt-title">
+      <div class="section-heading">
+        <p class="kicker">COPY, PASTE, START</p>
+        <h2 id="prompt-title">A useful first prompt.</h2>
+      </div>
+      <div class="prompt-card">
+        <pre id="example-prompt">Use $editorial-document-html to turn this Markdown document into a source-faithful standalone HTML article. Infer its semantic structure, preserve every claim and link, use humanist-blog style, and verify desktop, mobile, dark mode, and print behavior. Do not rewrite or summarize the source.</pre>
+        <button class="copy-button prompt-copy" data-copy="#example-prompt">Copy prompt</button>
+      </div>
+    </section>
+
+    <section class="principles section" aria-labelledby="principles-title">
+      <div class="section-heading">
+        <p class="kicker">THE CONTRACT</p>
+        <h2 id="principles-title">Structure is inferred.<br>Meaning is not invented.</h2>
+      </div>
+      <ol class="principle-list">
+        <li><b>01</b><div><h3>Preserve the source</h3><p>Wording, links, media, tables, order, and provenance survive the transformation.</p></div></li>
+        <li><b>02</b><div><h3>Prefer conservative inference</h3><p>Ambiguous content stays prose or a list instead of becoming decorative UI.</p></div></li>
+        <li><b>03</b><div><h3>Separate meaning from style</h3><p>One semantic schema supports four presentation systems without rewriting the document.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="closing">
+      <p class="kicker">OPEN SOURCE · MIT</p>
+      <h2>Make important documents<br><em>feel worth reading.</em></h2>
+      <a class="button button-primary" href="https://github.com/JaneJu777/editorial-document-html">Get the skill on GitHub ↗</a>
+      <p class="disclaimer">Independent open-source project. Not affiliated with, endorsed by, or sponsored by Anthropic, OpenAI, Monocle, or any other third-party publication or technology company.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Editorial Document HTML</span>
+    <span>Source-faithful by design · 2026</span>
+  </footer>
+  <script src="gallery.js"></script>
+</body>
+</html>
