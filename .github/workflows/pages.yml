@@ -26,7 +26,7 @@ jobs:
         run: python3 scripts/check_skill.py
       - name: Build gallery
         run: python3 scripts/build_gallery.py
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
